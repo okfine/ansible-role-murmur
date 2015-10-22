@@ -1,0 +1,30 @@
+---
+- name: Install mumble-server (Debian/Ubuntu)
+  apt:
+    pkg: "{{ item }}"
+    state: installed
+    update_cache: yes
+    cache_valid_time: "{{ 60*60*4 }}"
+  with_items:
+    - mumble-server
+
+- name: Deploy murmur configuration (Debian/Ubuntu)
+  template:
+    src: mumble-server.ini.j2
+    dest: /etc/mumble-server.ini
+    backup: yes
+  notify: restart murmur
+
+- name: Check if ufw is installed (Debian/Ubuntu)
+  stat:
+    path: /usr/sbin/ufw
+  register: ufw_installed
+
+- name: Allow incoming connections to murmur (Debian/Ubuntu)
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  with_items:
+    - "{{ murmur_sv_port }}"
+  when: ufw_installed.stat.exists

@@ -1,0 +1,47 @@
+database=/var/lib/mumble-server/mumble-server.sqlite
+dbus=system
+{% if murmur_ab_on %}
+{% if murmur_ab_attempts %}
+autobanAttempts={{ murmur_ab_attempts }}
+{% else %}
+autobanAttempts=10
+{% endif %}
+{% if murmur_ab_timeframe %}
+autobanTimeframe={{ murmur_ab_timeframe }}
+{% else %}
+autobanTimeframe=120
+{% endif %}
+{% if murmur_ab_bantime %}
+autobanTime={{ murmur_ab_bantime }}
+{% else %}
+autobanTime=300
+{% endif %}
+{% endif %}
+logfile=/var/log/mumble-server/mumble-server.log
+pidfile=/var/run/mumble-server/mumble-server.pid
+{% if murmur_sv_welcome %}
+{% else %}
+welcometext="<br />Welcome to this server running <b>Murmur</b>.<br />Enjoy your stay!<br />"
+{% endif %}
+{% if murmur_sv_port %}
+port={{ murmur_sv_port }}
+{% else %}
+port=64738
+{% endif %}
+{% if murmur_sv_password %}
+serverpassword="{{ murmur_sv_password }}"
+{% endif %}
+bandwidth=72000
+{% if murmur_sv_maxusers %}
+users={{ murmur_sv_maxusers }}
+{% else %}
+users=100
+{% endif %}
+textmessagelength=5000
+imagemessagelength=131072
+allowhtml=true
+{% if murmur_sv_sslcert %}
+sslCert={{ murmur_sv_sslcert }}
+sslKey={{ murmur_sv_sslkey }}
+{% endif %}
+uname=mumble-server

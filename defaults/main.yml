@@ -1,0 +1,11 @@
+---
+murmur_ab_on: true
+murmur_ab_attempts: 3
+murmur_ab_timeframe: 120
+murmur_ab_bantime: 300
+murmur_sv_welcome:
+murmur_sv_port: 64738
+murmur_sv_password: password
+murmur_sv_maxusers: 10
+murmur_sv_sslcert:
+murmur_sv_sslkey:
