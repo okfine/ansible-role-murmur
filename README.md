@@ -1,4 +1,4 @@
-ansible-role-murmur
+ansible-role-murmur [![Build Status](https://travis-ci.org/okfine/ansible-role-murmur.svg?branch=master)](https://travis-ci.org/okfine/ansible-role-murmur)
 =========
 
 Ansible role to install and configure murmur (Mumble server).
