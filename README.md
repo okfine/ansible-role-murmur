@@ -37,7 +37,7 @@ The ```murmur_sv_password``` variable sets the [server password](http://wiki.mum
 	murmur_sv_password: password
 
 
-The ```murmur_sv_password``` variable sets the [user limit](http://wiki.mumble.info/wiki/Murmur.ini#users).
+The ```murmur_sv_maxusers``` variable sets the [user limit](http://wiki.mumble.info/wiki/Murmur.ini#users).
 
 	murmur_sv_maxusers: 10
 
