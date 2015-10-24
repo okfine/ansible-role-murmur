@@ -1,3 +1,5 @@
 ---
 - name: restart murmur
-  service: name=mumble-server state=restarted
+  service:
+    name: mumble-server
+    state: restarted
