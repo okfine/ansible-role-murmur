@@ -20,11 +20,20 @@
     path: /usr/sbin/ufw
   register: ufw_installed
 
-- name: Allow incoming connections to murmur (Debian/Ubuntu)
+- name: Allow incoming connections to murmur via TCP (Debian/Ubuntu)
   ufw:
     rule: allow
     port: "{{ item }}"
     proto: tcp
+  with_items:
+    - "{{ murmur_sv_port }}"
+  when: ufw_installed.stat.exists
+
+- name: Allow incoming connections to murmur via UDP (Debian/Ubuntu)
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: udp
   with_items:
     - "{{ murmur_sv_port }}"
   when: ufw_installed.stat.exists
